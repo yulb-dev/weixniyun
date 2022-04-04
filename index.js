@@ -1,11 +1,13 @@
 const express = require('express')
+const router = require('./router/router')
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('欢迎使用微信云托管！')
-})
+require('./model/connectDatabase')
 
-app.use("/img", express.static("./public/img"));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+router(app)
 
 const port = process.env.PORT || 80
 app.listen(port, () => {
