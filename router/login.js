@@ -47,7 +47,6 @@ router.post('/', (req, res) => {
                     })
                 }
             })
-            res.send(token)
         });
     })
     // User.findOne(req.body, (err, data) => {
@@ -60,8 +59,5 @@ router.post('/', (req, res) => {
     //     }
     //     res.send(data)
     // })
-
-    
-
 })
 module.exports = router
