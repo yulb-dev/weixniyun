@@ -3,12 +3,13 @@ const router = express.Router()
 const User = require('../model/users')
 const http = require('http')
 
-router.get('/', (req, res) => {
-    console.log(req.query);
+router.post('/', (req, res) => {
+    const { name, avatar, code } = req.body
+    console.log(name, avatar, code);
     var params = new URLSearchParams({
         appid: 'wx224e9d3a79bf5e1f',
         secret: "f17a3a18bcc524419e2c10be947066ad",
-        js_code: req.query.code,
+        js_code: code,
         grant_type: "authorization_code"
     });
     let url = 'http://api.weixin.qq.com/sns/jscode2session?' + params
