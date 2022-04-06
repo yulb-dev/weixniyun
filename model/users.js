@@ -4,10 +4,12 @@ const port = require('../router/port')
 var users = new mongoose.Schema({
     name: {   //作者名
         type: String,
-        unique: true
     },
     password: { //用户密码
         type: String,
+    },
+    openid: {
+        type: String
     },
     avatar: {  //作者头像
         type: String,
