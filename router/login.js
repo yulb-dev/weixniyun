@@ -6,7 +6,6 @@ const sha1 = require('sha1')
 
 router.post('/', (req, res) => {
     const { name, avatar, code } = req.body
-    console.log(name, avatar, code);
     var params = new URLSearchParams({
         appid: 'wx224e9d3a79bf5e1f',
         secret: "f17a3a18bcc524419e2c10be947066ad",
