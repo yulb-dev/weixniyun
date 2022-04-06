@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/users')
-const http = require('http')
+const https = require('https')
 
 router.get('/', (req, res) => {
     console.log(req.query);
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         grant_type: "authorization_code"
     });
     let url = 'https://api.weixin.qq.com/sns/jscode2session?' + params
-    http.get(url, (response) => {
+    https.get(url, (response) => {
         var body = '';
 
         response.on('data', function (d) {
