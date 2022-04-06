@@ -1,17 +1,16 @@
 const express = require('express')
-const router = express.Router()
-const User = require('../model/users')
+const app = express()
 const https = require('https')
 
-router.get('/', (req, res) => {
-    console.log(req.query);
+app.get('/', (req, res) => {
     var params = new URLSearchParams({
         appid: 'wx224e9d3a79bf5e1f',
         secret: "f17a3a18bcc524419e2c10be947066ad",
-        js_code: req.query.code,
+        js_code: "003ucL000ZrICN1Gri1001zeWw0ucL0C",
         grant_type: "authorization_code"
     });
     let url = 'https://api.weixin.qq.com/sns/jscode2session?' + params
+    console.log(url);
     https.get(url, (response) => {
         var body = '';
 
@@ -19,6 +18,7 @@ router.get('/', (req, res) => {
             body += d;
         });
         response.on('end', function () {
+            console.log(body);
             res.send(body)
         });
     })
@@ -34,4 +34,6 @@ router.get('/', (req, res) => {
     // })
 
 })
-module.exports = router
+app.listen(3366, () => {
+    console.log('服务启动成功，端口：', 3366)
+})
