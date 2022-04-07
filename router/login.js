@@ -48,15 +48,18 @@ router.post('/', (req, res) => {
             })
         });
     })
-    // User.findOne(req.body, (err, data) => {
-    //     if (err) {
-    //         res.send(err)
-    //         return
-    //     }
-    //     if (data) {
-    //         req.session.userid = data._id
-    //     }
-    //     res.send(data)
-    // })
 })
+
+router.get('/init', (req, res) => {
+    const { openid } = req.query
+    User.findOne({ openid }, (err, data) => {
+        if (err) {
+            res.send(err)
+            return
+        }
+        res.send(data)
+    })
+})
+
+
 module.exports = router
