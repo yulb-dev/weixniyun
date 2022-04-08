@@ -28,13 +28,7 @@ router.post('/', (req, res) => {
                     res.send(err)
                 } else if (data) {
                     //更新用户信息
-                    User.findByIdAndUpdate(data._id, { name, avatar }, (err, data) => {
-                        if (err) {
-                            res.send(err)
-                            return
-                        }
-                        res.send(data)
-                    })
+                    res.send(data)
                 } else {
                     //创建用户
                     User.create({ name, avatar, openid }, (err, data) => {
