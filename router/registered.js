@@ -9,11 +9,20 @@ const path = require('path')
 const port = require('./port')
 
 router.post('/', (req, res) => {
-  
+
 })
 
 router.post('/setUp', (req, res) => {
-
+    const { name, gender, introduction, avatar, id } = req.body
+    User.findByIdAndUpdate(id, { name, gender, introduction, avatar }, (err, data) => {
+        if (err) {
+            res.send(err)
+            return
+        }
+        else {
+            res.send('ok')
+        }
+    })
 })
 
 router.post('/exit', (req, res) => {
@@ -22,11 +31,11 @@ router.post('/exit', (req, res) => {
 })
 
 router.post('/pushCard', (req, res) => {
-   
+
 })
 
 router.post('/goEdit', (req, res) => {
-   
+
 })
 
 
