@@ -31,7 +31,17 @@ router.post('/exit', (req, res) => {
 })
 
 router.post('/pushCard', (req, res) => {
-
+    const { imgsrc, userid, title, labels, content } = req.body
+    console.log({ imgsrc, userid, title, labels, content });
+    // Card.create({ imgsrc, userid, title, labels, content }, (err, data) => {
+    //     if (err) {
+    //         res.send(err)
+    //         return
+    //     }
+    //     User.findByIdAndUpdate(userid, { $push: { dynamic: data._id } }, (err, data2) => {
+    //         res.send(data._id)
+    //     })
+    // })
 })
 
 router.post('/goEdit', (req, res) => {
