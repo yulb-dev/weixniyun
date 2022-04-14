@@ -45,13 +45,18 @@ router.get('/dynamic', (req, res) => {
     GoodsCard
         .findById(req.query.id)
         .sort({ ctime: -1 })
-        .exec((err,data)=>{
+        .exec((err, data) => {
             res.send(data)
         })
 })
 //获取我的关注中的用户信息
-router.get('/idol', (req, res) => {
-    User.findById(req.query.id, (err, data) => {
+router.post('/idol', (req, res) => {
+    const { userIdList } = req.body
+    User.find({ _id: { $in: userIdList } }, (err, data) => {
+        if (err) {
+            res.send(err)
+            return
+        }
         res.send(data)
     })
 })
