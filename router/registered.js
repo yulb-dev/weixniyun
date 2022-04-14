@@ -57,8 +57,14 @@ router.post('/pushCard', (req, res) => {
     })
 })
 
-router.post('/goEdit', (req, res) => {
-
+router.post('/editCard', (req, res) => {
+    const { imgsrc, userid, title, labels, content, cardId } = req.body
+    Card.findByIdAndUpdate(cardId, { imgsrc, userid, title, labels, content }, (err, data) => {
+        if (err) {
+            return
+        }
+        res.send(data)
+    })
 })
 
 
